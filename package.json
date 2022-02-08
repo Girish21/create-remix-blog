@@ -1,0 +1,19 @@
+{
+  "name": "create-remix-blog",
+  "version": "0.0.4",
+  "bin": {
+    "create-remix-blog": "cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Girish21/create-remix-blog.git"
+  },
+  "keywords": [
+    "remix"
+  ],
+  "author": "Girish21",
+  "bugs": {
+    "url": "https://github.com/Girish21/create-remix-blog/issues"
+  },
+  "homepage": "https://github.com/Girish21/create-remix-blog#readme"
+}
