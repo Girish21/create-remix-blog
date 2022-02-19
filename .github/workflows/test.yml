@@ -26,10 +26,10 @@ jobs:
         with:
           node-version: 16
 
-      - name: 📥 Download deps
+      - name: 📥 Download build deps
         uses: bahmutov/npm-install@v1
 
-      - name: 📥 Download deps
+      - name: 📥 Download source deps
         uses: bahmutov/npm-install@v1
         with:
           working-directory: src
@@ -54,10 +54,10 @@ jobs:
         with:
           node-version: 16
 
-      - name: 📥 Download deps
+      - name: 📥 Download build deps
         uses: bahmutov/npm-install@v1
 
-      - name: 📥 Download deps
+      - name: 📥 Download source deps
         uses: bahmutov/npm-install@v1
         with:
           working-directory: src
