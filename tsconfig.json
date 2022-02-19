@@ -1,4 +1,4 @@
 {
   "files": [],
-  "references": [{ "path": "./create-remix-blog" }]
+  "references": [{ "path": "./src" }, { "path": "./scripts" }]
 }

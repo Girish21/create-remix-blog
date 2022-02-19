@@ -14,5 +14,18 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['import', '@typescript-eslint', 'prettier'],
+  rules: {
+    '@typescript-eslint/consistent-type-imports': 'error',
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'always',
+        groups: [
+          ['builtin', 'external', 'internal'],
+          ['parent', 'sibling', 'index'],
+        ],
+      },
+    ],
+  },
 }
