@@ -1,4 +1,5 @@
 import * as inquirer from 'inquirer'
+
 import { buildApp } from '.'
 
 run()
