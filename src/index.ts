@@ -1,3 +1,3 @@
 export const buildApp = () => {
-  return null;
-};
+  return null
+}

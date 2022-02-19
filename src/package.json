@@ -1,6 +1,6 @@
 {
   "name": "create-remix-blog",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "bin": {
     "create-remix-blog": "cli.js"
   },
@@ -17,8 +17,7 @@
   "dependencies": {
     "fs-extra": "^10.0.0",
     "inquirer": "^8.2.0",
-    "meow": "^10.1.2",
-    "semver": "^7.3.5"
+    "meow": "^10.1.2"
   },
   "devDependencies": {
     "@types/inquirer": "^8.2.0"
