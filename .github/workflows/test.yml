@@ -29,6 +29,11 @@ jobs:
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
 
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+        with:
+          working-directory: src
+
       - name: 🔬 Lint
         run: npm run lint
 
@@ -51,6 +56,11 @@ jobs:
 
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+        with:
+          working-directory: src
 
       - name: 🔎 Type check
         run: npm run typecheck
