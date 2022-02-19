@@ -44,7 +44,7 @@ async function run(...args: string[]) {
 
   updatePackageVersion(nextVersion)
 
-  execSync(`git commit --all --message="Version ${nextVersion}"`)
+  execSync(`git commit --all --message="🚀 Version ${nextVersion}"`)
   execSync(`git tag -a -m "🚀 Version ${nextVersion}" v${nextVersion}`)
 }
 
