@@ -6,7 +6,7 @@ import copy from 'rollup-plugin-copy'
 export default function build() {
   return [
     {
-      external: [/node_modules/],
+      external: [/node_modules/, /meow/],
       input: ['./src/cli.ts'],
       output: {
         dir: 'build',
@@ -21,7 +21,10 @@ export default function build() {
         }),
         nodeResolve({ extensions: ['.ts'] }),
         copy({
-          targets: [{ src: './src/package.json', dest: 'build' }],
+          targets: [
+            { src: './src/package.json', dest: 'build' },
+            { src: './src/templates', dest: 'build' },
+          ],
         }),
       ],
     },
