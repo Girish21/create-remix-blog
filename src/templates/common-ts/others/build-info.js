@@ -7,7 +7,7 @@ const SHA = process.env.COMMIT_SHA
 async function getCommitInfo() {
   try {
     const response = await fetch(
-      `https://api.github.com/repos/Girish21/remix-fly-multiregion-deployment/commits/${SHA}`
+      `https://api.github.com/repos/Girish21/remix-fly-multiregion-deployment/commits/${SHA}`,
     )
     const data = await response.json()
 
@@ -31,7 +31,7 @@ async function run() {
 
   fs.writeFileSync(
     path.join(__dirname, '../public/build/info.json'),
-    JSON.stringify(data, null, 2)
+    JSON.stringify(data, null, 2),
   )
 }
 run()

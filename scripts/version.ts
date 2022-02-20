@@ -30,12 +30,12 @@ async function run(...args: string[]) {
     nextVersion = getNextVersion(
       currentVersion,
       givenVersion as ReleaseType,
-      preRelease
+      preRelease,
     )
   }
 
   const confirm = await confirmUpgrade(
-    `Continue upgrading the versions from ${currentVersion} to ${nextVersion}? (Y/n)`
+    `Continue upgrading the versions from ${currentVersion} to ${nextVersion}? (Y/n)`,
   )
 
   if (!confirm) {
@@ -51,7 +51,7 @@ async function run(...args: string[]) {
 function getNextVersion(
   currentVersion: string,
   givenVersion: ReleaseType,
-  prereleaseId = 'pre'
+  prereleaseId = 'pre',
 ) {
   if (givenVersion == null) {
     console.error('Missing next version. Usage: node version.js [nextVersion]')
@@ -108,7 +108,7 @@ function ensureCleanWorkingDirectory() {
   const lines = status.split('\n')
   if (!lines.every(line => line === '' || line.startsWith('?'))) {
     console.error(
-      'Working directory is not clean. Please commit or stash your changes.'
+      'Working directory is not clean. Please commit or stash your changes.',
     )
     process.exit(1)
   }

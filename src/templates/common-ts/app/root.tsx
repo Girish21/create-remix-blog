@@ -80,7 +80,7 @@ export const loader: LoaderFunction = async ({ request }) => {
       headers: {
         'Strict-Transport-Security': `max-age=${HUNDRED_YEARS}`,
       },
-    }
+    },
   )
 }
 
@@ -88,19 +88,19 @@ function App() {
   const [theme] = useTheme()
 
   return (
-    <html lang="en" className={`h-full ${theme ? theme : 'dark'}`}>
+    <html lang='en' className={`h-full ${theme ? theme : 'dark'}`}>
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta charSet='utf-8' />
+        <meta name='viewport' content='width=device-width,initial-scale=1' />
         <ThemeMeta />
         <Meta />
         <Links />
       </head>
-      <body className="h-full bg-white dark:bg-slate-800">
-        <SkipNavLink className="bg-gray-700">Skip to content</SkipNavLink>
-        <div className="flex h-full flex-col">
+      <body className='h-full bg-white dark:bg-slate-800'>
+        <SkipNavLink className='bg-gray-700'>Skip to content</SkipNavLink>
+        <div className='flex h-full flex-col'>
           <Nav />
-          <main className="flex-1 px-6">
+          <main className='flex-1 px-6'>
             <SkipNavContent />
             <Outlet />
           </main>

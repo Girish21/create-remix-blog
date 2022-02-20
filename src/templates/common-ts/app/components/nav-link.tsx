@@ -10,7 +10,7 @@ export default function NavLink({ className, ...rest }: NavLinkProps) {
         clsx(
           'text-xl text-gray-800 dark:text-gray-50',
           isActive ? 'underline underline-offset-2' : null,
-          className
+          className,
         )
       }
       {...rest}

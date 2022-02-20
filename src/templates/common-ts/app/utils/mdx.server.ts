@@ -24,7 +24,7 @@ async function dirList(dir: string) {
 
 async function downloadMdx(
   filesList: Array<{ slug: string }>,
-  contentDir: string
+  contentDir: string,
 ) {
   return Promise.all(
     filesList.map(async ({ slug }) => {
@@ -35,7 +35,7 @@ async function downloadMdx(
         path,
         slug,
       }
-    })
+    }),
   )
 }
 
@@ -55,13 +55,13 @@ async function compileMdxPages(pages: Awaited<ReturnType<typeof downloadMdx>>) {
         ...compiledPage,
         slug,
       }
-    })
+    }),
   )
 }
 
 async function upsertContent(
   compiledPages: Awaited<ReturnType<typeof compileMdxPages>>,
-  contentDirectory: string
+  contentDirectory: string,
 ) {
   return Promise.all(
     compiledPages.map(compiledPage => {
@@ -78,7 +78,7 @@ async function upsertContent(
         })
       }
       return null
-    })
+    }),
   )
 }
 

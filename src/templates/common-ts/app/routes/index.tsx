@@ -36,7 +36,7 @@ export const loader: LoaderFunction = async () => {
 
   return json<LoaderData>(
     { blogList: blogList.slice(0, 10) },
-    { headers: { 'cache-control': 'private, max-age=60' } }
+    { headers: { 'cache-control': 'private, max-age=60' } },
   )
 }
 
@@ -45,17 +45,17 @@ export default function Index() {
 
   return (
     <>
-      <section className="mx-auto max-w-4xl">
-        <div className="grid h-[calc(100vh-92px)] place-content-center">
-          <h1 className="flex flex-col items-center p-4">
+      <section className='mx-auto max-w-4xl'>
+        <div className='grid h-[calc(100vh-92px)] place-content-center'>
+          <h1 className='flex flex-col items-center p-4'>
             <GradientText>Remix</GradientText>
             <GradientText>Blog</GradientText>
           </h1>
         </div>
       </section>
-      <section className="mx-auto mt-32 w-[90vw]">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="text-xl text-gray-800 dark:text-gray-100">
+      <section className='mx-auto mt-32 w-[90vw]'>
+        <div className='mx-auto max-w-4xl'>
+          <h2 className='text-xl text-gray-800 dark:text-gray-100'>
             Recent Posts
           </h2>
           <BlogList blogList={blogList} />
@@ -68,7 +68,7 @@ export default function Index() {
 function GradientText(props: React.HTMLAttributes<HTMLSpanElement>) {
   return (
     <span
-      className="bg-gradient-to-r from-sky-600 via-pink-500 to-red-600 bg-clip-text text-center text-6xl leading-snug text-transparent dark:via-blue-400 dark:to-green-300"
+      className='bg-gradient-to-r from-sky-600 via-pink-500 to-red-600 bg-clip-text text-center text-6xl leading-snug text-transparent dark:via-blue-400 dark:to-green-300'
       {...props}
     />
   )

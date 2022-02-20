@@ -45,7 +45,7 @@ export const loader: LoaderFunction = async () => {
     { blogList },
     {
       headers: { 'cache-control': 'private, max-age=60', Vary: 'Cookie' },
-    }
+    },
   )
 }
 
@@ -53,7 +53,7 @@ export default function Blog() {
   const { blogList } = useLoaderData<LoaderData>()
 
   return (
-    <section className="mx-auto min-h-screen max-w-4xl pt-24">
+    <section className='mx-auto min-h-screen max-w-4xl pt-24'>
       <BlogList blogList={blogList} />
     </section>
   )

@@ -8,7 +8,7 @@ export enum Theme {
 
 type ThemeContext = [
   Theme | null,
-  React.Dispatch<React.SetStateAction<Theme | null>>
+  React.Dispatch<React.SetStateAction<Theme | null>>,
 ]
 
 const themes = Object.values(Theme)
@@ -59,7 +59,7 @@ export function ThemeProvider({
 
     themeFetcherRef.current.submit(
       { theme },
-      { method: 'post', action: '_action/set-theme' }
+      { method: 'post', action: '_action/set-theme' },
     )
   }, [theme])
 
@@ -103,7 +103,7 @@ export function ThemeMeta() {
 
   return (
     <meta
-      name="color-scheme"
+      name='color-scheme'
       content={theme === Theme.dark ? 'dark light' : 'light dark'}
     />
   )

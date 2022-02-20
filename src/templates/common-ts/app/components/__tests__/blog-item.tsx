@@ -12,12 +12,12 @@ describe('Blog Item', () => {
   it('Simple test', () => {
     render(
       <BlogItem
-        description="Sample blog for test"
-        slug="blog"
+        description='Sample blog for test'
+        slug='blog'
         timestamp={new Date()}
-        title="Test blog"
+        title='Test blog'
       />,
-      { wrapper: Wrapper }
+      { wrapper: Wrapper },
     )
 
     expect(screen.getByRole('link')).toBeInTheDocument()

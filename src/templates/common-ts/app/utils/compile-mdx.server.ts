@@ -55,7 +55,7 @@ async function compileMdxImpl<FrontmatterType extends Record<string, unknown>>({
 
 function arrayToObject<Item extends Record<string, unknown>>(
   array: Array<Item>,
-  { keyname, valuename }: { keyname: keyof Item; valuename: keyof Item }
+  { keyname, valuename }: { keyname: keyof Item; valuename: keyof Item },
 ) {
   const obj: Record<string, Item[keyof Item]> = {}
 
@@ -72,12 +72,12 @@ function arrayToObject<Item extends Record<string, unknown>>(
 }
 
 async function queuedCompileMdx<
-  FrontmatterType extends Record<string, unknown>
+  FrontmatterType extends Record<string, unknown>,
 >(...params: Parameters<typeof compileMdxImpl>) {
   const queue = await getQueue()
 
   const result = await queue.add(() =>
-    compileMdxImpl<FrontmatterType>(...params)
+    compileMdxImpl<FrontmatterType>(...params),
   )
 
   return result

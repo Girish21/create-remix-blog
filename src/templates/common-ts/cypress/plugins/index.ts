@@ -5,7 +5,7 @@
  */
 module.exports = (
   on: Cypress.PluginEvents,
-  config: Cypress.PluginConfigOptions
+  config: Cypress.PluginConfigOptions,
 ) => {
   const isDev = config.watchForFileChanges
   const port = process.env.PORT ?? (isDev ? '3000' : '8811')
@@ -26,7 +26,7 @@ module.exports = (
         '--allow-file-access-from-files',
         '--use-fake-ui-for-media-stream',
         '--use-fake-device-for-media-stream',
-        '--use-file-for-fake-audio-capture=cypress/fixtures/sample.wav'
+        '--use-file-for-fake-audio-capture=cypress/fixtures/sample.wav',
       )
     }
     return options

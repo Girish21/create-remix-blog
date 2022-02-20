@@ -15,7 +15,7 @@ type AnchorProps = React.DetailedHTMLProps<
 const LinkOrAnchor = React.forwardRef<HTMLAnchorElement, AnchorProps>(
   function LinkOrAnchorImpl(
     { reloadDocument, download, to, href, prefetch, ...rest },
-    ref
+    ref,
   ) {
     let url = ''
     let anchor = reloadDocument || download
@@ -47,7 +47,7 @@ const LinkOrAnchor = React.forwardRef<HTMLAnchorElement, AnchorProps>(
         prefetch={prefetch}
       />
     )
-  }
+  },
 )
 
 export default LinkOrAnchor

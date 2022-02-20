@@ -11,7 +11,7 @@ export function preloadSvg() {
 }
 
 export function SsrPlaceholder() {
-  return <div className="h-8 w-8" />
+  return <div className='h-8 w-8' />
 }
 
 export default function ThemeToggle() {
@@ -26,7 +26,7 @@ export default function ThemeToggle() {
       }
     >
       <svg
-        xmlns="http://www.w3.org/2000/svg"
+        xmlns='http://www.w3.org/2000/svg'
         className={`h-8 w-8 ${dark ? 'text-gray-200' : 'text-zinc-500'}`}
       >
         {dark ? (
@@ -35,7 +35,7 @@ export default function ThemeToggle() {
           <use href={`${LightBulbSvg}#light-mode-bulb`} />
         )}
       </svg>
-      <span className="sr-only">{dark ? 'Dark theme' : 'Light theme'}</span>
+      <span className='sr-only'>{dark ? 'Dark theme' : 'Light theme'}</span>
     </button>
   )
 }

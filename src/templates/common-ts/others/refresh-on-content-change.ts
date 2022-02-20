@@ -9,7 +9,7 @@ const refreshPath = path.resolve(process.cwd(), 'app', 'refresh.ignore.js')
 chokidar.watch(watchPath).on('change', changePath => {
   const relativeChangePath = changePath.replace(
     `${path.resolve(process.cwd(), 'content')}/`,
-    ''
+    '',
   )
   console.log('🛠 content changed', relativeChangePath)
 

@@ -13,20 +13,20 @@ export function createApp(
   projectDir: string,
   server: Servers,
   language: Language,
-  db: DB
+  db: DB,
 ) {
   const versions = process.versions
 
   if (!versions.node) {
     throw new Error(
-      'Remix requires Node.js, please setup Node in your environment before continuing with the rest of the setup'
+      'Remix requires Node.js, please setup Node in your environment before continuing with the rest of the setup',
     )
   }
 
   // check Node version
   if (versions.node && parseInt(versions.node) < 14) {
     throw new Error(
-      `Remix requires a Node.js version of 14 or greater, but an older version of Node.js was detected ${versions.node}. Please update to Node.js version 14 or greater before continuing`
+      `Remix requires a Node.js version of 14 or greater, but an older version of Node.js was detected ${versions.node}. Please update to Node.js version 14 or greater before continuing`,
     )
   }
 
@@ -37,7 +37,7 @@ export function createApp(
   if (!isCurrentDirectory) {
     if (fs.existsSync(projectDir)) {
       console.log(
-        `\n'${relativePath}' already exist. Please try again with another directory\n`
+        `\n'${relativePath}' already exist. Please try again with another directory\n`,
       )
       process.exit(1)
     } else {
@@ -49,7 +49,7 @@ export function createApp(
   const commonTemplate = path.resolve(
     __dirname,
     'templates',
-    `common-${language}`
+    `common-${language}`,
   )
   fs.copySync(commonTemplate, projectDir, { overwrite: true })
 
@@ -63,7 +63,7 @@ export function createApp(
   const dbTemplate = path.resolve(
     __dirname,
     'templates',
-    `${server}-${db}-${language}`
+    `${server}-${db}-${language}`,
   )
   if (fs.existsSync(dbTemplate)) {
     fs.copySync(dbTemplate, projectDir, {
@@ -87,7 +87,7 @@ export function createApp(
     if (fs.existsSync(filePath)) {
       fs.renameSync(
         path.join(projectDir, file),
-        path.join(projectDir, `.${file}`)
+        path.join(projectDir, `.${file}`),
       )
     }
   }
@@ -97,7 +97,7 @@ export function createApp(
   for (const template of [serverTemplate, dbTemplate]) {
     if (fs.existsSync(template)) {
       const templatePkg = jsonfs.readFileSync(
-        path.join(template, 'package.json')
+        path.join(template, 'package.json'),
       )
       for (const section of ['dependencies', 'devDependencies', 'scripts']) {
         Object.assign(appPkg[section], templatePkg[section])

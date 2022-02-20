@@ -78,7 +78,7 @@ function getChangedFiles(sha, compareSha) {
     const pattern = /^(?<change>\w).*?\s+(?<filename>.+$)/
 
     const diff = execSync(
-      `git diff --name-status ${sha} ${compareSha}`
+      `git diff --name-status ${sha} ${compareSha}`,
     ).toString()
 
     const changedFiles = diff

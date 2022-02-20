@@ -98,7 +98,7 @@ published: ${published}
   }
 
   console.log(
-    `\nBlog created 🚀\n\`cd\` into ${relativePath}\nOpen it in you favorite text editor, and get started!\n`
+    `\nBlog created 🚀\n\`cd\` into ${relativePath}\nOpen it in you favorite text editor, and get started!\n`,
   )
 }
 

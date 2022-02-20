@@ -44,7 +44,7 @@ export const GitHubMocks: Array<
         !path.startsWith('content')
       ) {
         throw new Error(
-          `Trying to fetch resource for unmockable resource: ${owner}/${repo}/${path}`
+          `Trying to fetch resource for unmockable resource: ${owner}/${repo}/${path}`,
         )
       }
 
@@ -59,7 +59,7 @@ export const GitHubMocks: Array<
             message: 'Not Found',
             documentation_url:
               'https://docs.github.com/rest/reference/repos#get-repository-content',
-          })
+          }),
         )
       }
 
@@ -72,7 +72,7 @@ export const GitHubMocks: Array<
           ctx.json({
             content: Buffer.from(file, 'utf-8').toString(encoding),
             encoding,
-          })
+          }),
         )
       }
 
@@ -91,11 +91,11 @@ export const GitHubMocks: Array<
             sha,
             type: isDir ? 'dir' : 'file',
           }
-        })
+        }),
       )
 
       return res(ctx.status(200), ctx.json(dirContent))
-    }
+    },
   ),
   rest.get(
     'https://api.github.com/repos/:owner/:repo/git/blobs/:sha',
@@ -109,7 +109,7 @@ export const GitHubMocks: Array<
 
       if (owner !== process.env.GH_OWNER || repo !== process.env.GH_REPO) {
         throw new Error(
-          `Trying to fetch resource for unmockable resource: ${owner}/${repo}`
+          `Trying to fetch resource for unmockable resource: ${owner}/${repo}`,
         )
       }
 
@@ -127,9 +127,9 @@ export const GitHubMocks: Array<
           sha,
           content: Buffer.from(content, 'utf-8').toString(encoding),
           encoding,
-        })
+        }),
       )
-    }
+    },
   ),
   rest.get(
     'https://api.github.com/repos/:owner/:repo/contents/:path*',
@@ -147,7 +147,7 @@ export const GitHubMocks: Array<
         !path.startsWith('content')
       ) {
         throw new Error(
-          `Trying to fetch resource for unmockable resource: ${owner}/${repo}/${path}`
+          `Trying to fetch resource for unmockable resource: ${owner}/${repo}/${path}`,
         )
       }
 
@@ -161,8 +161,8 @@ export const GitHubMocks: Array<
           sha: path,
           content: Buffer.from(content, 'utf-8').toString(encoding),
           encoding,
-        })
+        }),
       )
-    }
+    },
   ),
 ]

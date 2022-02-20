@@ -6,7 +6,7 @@ type BlogList = { blogList: Awaited<ReturnType<typeof getMdxListItems>> }
 
 export default function BlogList({ blogList }: BlogList) {
   return (
-    <ol className="flex flex-col">
+    <ol className='flex flex-col'>
       {blogList.map(blogItem => (
         <BlogItem key={blogItem.slug} {...blogItem} />
       ))}

@@ -46,7 +46,7 @@ async function run() {
             type: 'input',
             name: 'name',
           })
-        ).name
+        ).name,
   )
 
   const answers = await inquirer.prompt<{
