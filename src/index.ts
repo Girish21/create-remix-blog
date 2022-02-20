@@ -47,13 +47,13 @@ export function createApp(
 
   // copy from templates to project directory
   const commonTemplate = path.resolve(
-    process.cwd(),
+    __dirname,
     'templates',
     `common-${language}`
   )
   fs.copySync(commonTemplate, projectDir, { overwrite: true })
 
-  const serverTemplate = path.resolve(process.cwd(), 'templates', server)
+  const serverTemplate = path.resolve(__dirname, 'templates', server)
   if (fs.existsSync(serverTemplate)) {
     fs.copySync(serverTemplate, projectDir, {
       overwrite: true,
@@ -61,7 +61,7 @@ export function createApp(
   }
 
   const dbTemplate = path.resolve(
-    process.cwd(),
+    __dirname,
     'templates',
     `${server}-${db}-${language}`
   )
