@@ -1,5 +1,7 @@
-import { ActionFunction, json } from 'remix'
-import { promises } from 'dns'
+import type { ActionFunction } from 'remix'
+import { json } from 'remix'
+import * as dns from 'dns'
+
 import { getRequiredEnvVar } from '~/utils/misc'
 
 export const action: ActionFunction = async ({ request }) => {
@@ -9,7 +11,7 @@ export const action: ActionFunction = async ({ request }) => {
 
   const body = await request.text()
   const address = `global.${getRequiredEnvVar('FLY_APP_NAME')}.internal`
-  const ipv6s = await promises.resolve6(address)
+  const ipv6s = await dns.promises.resolve6(address)
 
   const urls = ipv6s.map(ip => `http://[${ip}]:${getRequiredEnvVar('PORT')}`)
 
@@ -25,7 +27,7 @@ export const action: ActionFunction = async ({ request }) => {
         'content-type': 'application/json',
         'content-length': Buffer.byteLength(body).toString(),
       },
-    })
+    }),
   )
 
   const response = await Promise.all(fetches)
