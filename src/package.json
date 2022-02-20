@@ -16,10 +16,12 @@
   "homepage": "https://github.com/Girish21/create-remix-blog#readme",
   "dependencies": {
     "fs-extra": "^10.0.0",
-    "inquirer": "^8.2.0",
-    "meow": "^10.1.2"
+    "inquirer": "^8.0.0",
+    "jsonfile": "^6.1.0",
+    "meow": "^7.1.1"
   },
   "devDependencies": {
-    "@types/inquirer": "^8.2.0"
+    "@types/inquirer": "^8.2.0",
+    "@types/jsonfile": "^6.1.0"
   }
 }
