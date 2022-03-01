@@ -23,6 +23,7 @@
     "sort-package-json": "^1.54.0"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
     "@types/iarna__toml": "^2.0.2",
     "@types/inquirer": "^8.2.0",
     "@types/jsonfile": "^6.1.0"
