@@ -115,6 +115,9 @@ export async function createApp(
     },
   )
 
+  // run npm install
+  childprocess.execSync('npm install', { cwd: projectDir, stdio: 'inherit' })
+
   // setup prject if any specific setup is required
   const projectScriptsDir = path.resolve(projectDir, 'scripts')
   const projectScripts = path.resolve(projectDir, 'scripts', 'init.js')
@@ -125,7 +128,4 @@ export async function createApp(
     await initProject(projectDir)
     fs.removeSync(projectScriptsDir)
   }
-
-  // run npm install
-  childprocess.execSync('npm install', { cwd: projectDir, stdio: 'inherit' })
 }
