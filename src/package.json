@@ -15,12 +15,15 @@
   },
   "homepage": "https://github.com/Girish21/create-remix-blog#readme",
   "dependencies": {
+    "@iarna/toml": "^2.2.5",
     "fs-extra": "^10.0.0",
     "inquirer": "^8.0.0",
     "jsonfile": "^6.1.0",
-    "meow": "^7.1.1"
+    "meow": "^7.1.1",
+    "sort-package-json": "^1.54.0"
   },
   "devDependencies": {
+    "@types/iarna__toml": "^2.0.2",
     "@types/inquirer": "^8.2.0",
     "@types/jsonfile": "^6.1.0"
   }

@@ -2,5 +2,6 @@ build
 
 package-lock.json
 
+src/templates
 src/node_modules
 node_modules

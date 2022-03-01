@@ -2,6 +2,7 @@ import fs from 'fs-extra'
 import path from 'path'
 import jsonfs from 'jsonfile'
 import childprocess from 'child_process'
+import sortPackage from 'sort-package-json'
 
 export type Servers = 'fly'
 
@@ -9,7 +10,7 @@ export type Language = 'ts' | 'js'
 
 export type DB = 'sqlite'
 
-export function createApp(
+export async function createApp(
   projectDir: string,
   server: Servers,
   language: Language,
@@ -106,9 +107,24 @@ export function createApp(
   }
 
   // write back project package
-  jsonfs.writeFileSync(path.join(projectDir, 'package.json'), appPkg, {
-    spaces: 2,
-  })
+  jsonfs.writeFileSync(
+    path.join(projectDir, 'package.json'),
+    sortPackage(appPkg),
+    {
+      spaces: 2,
+    },
+  )
+
+  // setup prject if any specific setup is required
+  const projectScriptsDir = path.resolve(projectDir, 'scripts')
+  const projectScripts = path.resolve(projectDir, 'scripts', 'init.js')
+
+  if (fs.existsSync(projectScriptsDir)) {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const initProject = require(projectScripts)
+    await initProject(projectDir)
+    fs.removeSync(projectScriptsDir)
+  }
 
   // run npm install
   childprocess.execSync('npm install', { cwd: projectDir, stdio: 'inherit' })

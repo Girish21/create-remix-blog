@@ -87,5 +87,5 @@ async function run() {
     },
   ])
 
-  createApp(projectDir, answers.server, answers.lang, answers.cacheType)
+  await createApp(projectDir, answers.server, answers.lang, answers.cacheType)
 }
