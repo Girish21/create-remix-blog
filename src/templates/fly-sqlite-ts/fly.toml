@@ -1,6 +1,4 @@
-# fly.toml file generated for remix-fly-region-test on 2022-01-09T12:12:44+05:30
-
-app = "remix-fly-region-test"
+app = "YOUR_APP_NAME"
 
 kill_signal = "SIGINT"
 kill_timeout = 5

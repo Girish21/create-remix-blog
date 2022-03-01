@@ -1,5 +1,6 @@
 import type { Content } from '@prisma/client'
 import {
+  deleteContent,
   getContent,
   getContentList,
   getMdxCount,
@@ -48,6 +49,7 @@ async function compileMdxPages(pages: Awaited<ReturnType<typeof downloadMdx>>) {
       })
 
       if (!compiledPage) {
+        await deleteContent(slug)
         return null
       }
 

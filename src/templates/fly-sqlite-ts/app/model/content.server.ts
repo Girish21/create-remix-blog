@@ -147,12 +147,28 @@ async function upsertContentImpl({
   })
 }
 
+export async function deleteSlug(slug: string) {
+  return db.content.delete({ where: { slug } })
+}
+
+export async function refreshAllContent() {
+  return db.content.updateMany({ data: { requiresUpdate: true } })
+}
+
 export async function upsertContent(
   ...params: Parameters<typeof upsertContentImpl>
 ) {
   const queue = await getQueue()
 
   const result = await queue.add(() => upsertContentImpl(...params))
+
+  return result
+}
+
+export async function deleteContent(slug: string) {
+  const queue = await getQueue()
+
+  const result = await queue.add(() => deleteSlug(slug))
 
   return result
 }

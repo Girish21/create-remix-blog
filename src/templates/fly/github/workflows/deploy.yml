@@ -29,6 +29,8 @@ jobs:
         id: changes
         run: >-
           echo ::set-output name=DEPLOYABLE::$(node ./others/is-deployable.js)
+        env:
+          FLY_APP_NAME: ${{ secrets.FLY_APP_NAME }}
 
       - name: ❓ Deployable
         run: >-
@@ -186,9 +188,10 @@ jobs:
         with:
           context: .
           push: true
-          tags: registry.fly.io/remix-fly-region-test:${{ github.sha }}
+          tags: registry.fly.io/${{ secrets.FLY_APP_NAME }}:${{ github.sha }}
           build-args: |
             COMMIT_SHA=${{ github.sha }}
+            GITHUB_REPOSITORY=${{ github.repository }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,mode=max,dest=/tmp/.buildx-cache-new
 
@@ -221,7 +224,7 @@ jobs:
         uses: superfly/flyctl-actions@1.1
         with:
           args:
-            'deploy -i registry.fly.io/remix-fly-region-test:${{ github.sha }}
+            'deploy -i registry.fly.io/${{ secrets.FLY_APP_NAME }}:${{ github.sha }}
             --strategy rolling'
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

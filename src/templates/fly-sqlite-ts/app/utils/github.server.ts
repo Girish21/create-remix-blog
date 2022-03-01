@@ -18,6 +18,14 @@ const cache = new Lrucache({
 
 const Octokit = createOctokit.plugin(throttling)
 
+function getGHOwner() {
+  return getRequiredEnvVar('GITHUB_REPOSITORY').split('/')[0]
+}
+
+function getGHRepository() {
+  return getRequiredEnvVar('GITHUB_REPOSITORY').split('/')[1]
+}
+
 const octokit = new Octokit({
   auth: getRequiredEnvVar('GITHUB_TOKEN'),
   throttle: {
@@ -49,8 +57,8 @@ function cachify<TArgs, TReturn>(fn: (args: TArgs) => Promise<TReturn>) {
 
 async function downloadDirectoryListImpl(path: string) {
   const { data } = await octokit.repos.getContent({
-    owner: getRequiredEnvVar('GH_OWNER'),
-    repo: getRequiredEnvVar('GH_REPO'),
+    owner: getGHOwner(),
+    repo: getGHRepository(),
     path,
   })
 
@@ -67,8 +75,8 @@ async function downloadFileByShaImpl(sha: string) {
   const { data } = await octokit.request(
     'GET /repos/{owner}/{repo}/git/blobs/{file_sha}',
     {
-      owner: getRequiredEnvVar('GH_OWNER'),
-      repo: getRequiredEnvVar('GH_REPO'),
+      owner: getGHOwner(),
+      repo: getGHRepository(),
       file_sha: sha,
     },
   )

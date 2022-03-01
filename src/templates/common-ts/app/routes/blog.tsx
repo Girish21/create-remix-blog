@@ -6,7 +6,6 @@ import type {
   MetaFunction,
 } from 'remix'
 import { json, useLoaderData } from 'remix'
-
 import BlogList from '~/components/blog-list'
 import { getMdxListItems } from '~/utils/mdx.server'
 import { getSeo } from '~/utils/seo'

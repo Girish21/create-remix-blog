@@ -2,7 +2,7 @@ const { fetchJSON, getChangedFiles } = require('./utils')
 
 async function go() {
   const buildInfo = await fetchJSON({
-    url: 'https://remix-fly-region-test.fly.dev/build/info.json',
+    url: `https://${process.env.FLY_APP_NAME}.fly.dev/build/info.json`,
   })
   const sha = buildInfo.data.sha
   const compareSha = process.env.GITHUB_SHA

@@ -7,7 +7,7 @@ const SHA = process.env.COMMIT_SHA
 async function getCommitInfo() {
   try {
     const response = await fetch(
-      `https://api.github.com/repos/Girish21/remix-fly-multiregion-deployment/commits/${SHA}`,
+      `https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/commits/${SHA}`,
     )
     const data = await response.json()
 

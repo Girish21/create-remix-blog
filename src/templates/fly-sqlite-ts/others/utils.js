@@ -32,7 +32,7 @@ async function postJSON({
       ['_data', 'routes/_content/refresh-content'],
     ])
     const options = {
-      hostname: 'remix-fly-region-test.fly.dev',
+      hostname: `${process.env.FLY_APP_NAME}.fly.dev`,
       port: 443,
       path: `/_content/refresh-content?${searchParams}`,
       method: 'POST',

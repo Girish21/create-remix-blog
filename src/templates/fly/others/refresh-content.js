@@ -4,13 +4,13 @@ async function go() {
   const compareSha = process.env.GITHUB_SHA
 
   const shaInfo = await fetchJSON({
-    url: 'https://remix-fly-region-test.fly.dev/_content/refresh-content.json',
+    url: `https://${process.env.FLY_APP_NAME}.fly.dev/_content/refresh-content.json`,
   })
   let sha = shaInfo?.sha
 
   if (!sha) {
     const buildInfo = await fetchJSON({
-      url: 'https://remix-fly-region-test.fly.dev/build/info.json',
+      url: `https://${process.env.FLY_APP_NAME}.fly.dev/build/info.json`,
     })
     sha = buildInfo.data.sha
   }
@@ -22,7 +22,10 @@ async function go() {
 
   const changedFiles = getChangedFiles(sha, compareSha) ?? []
   const contentPaths = changedFiles
-    .filter(({ filename }) => filename.startsWith('content'))
+    .filter(
+      ({ filename }) =>
+        filename.startsWith('content') && filename.match(/\w+\/\w+\/\w+/g),
+    )
     .map(({ filename }) => filename.replace(/^content\//, ''))
 
   if (contentPaths && contentPaths.length > 0) {

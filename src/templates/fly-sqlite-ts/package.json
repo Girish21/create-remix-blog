@@ -1,5 +1,8 @@
 {
-  "devDependencies": {
-    "prisma": "^3.9.2"
+  "scripts": {
+    "dev:remix": "node -r dotenv/config -r ./mocks node_modules/.bin/remix dev",
+    "dev": "concurrently \"npm:dev:css\" \"npm:dev:remix\" \"npm:dev:content\"",
+    "start": "remix-serve build",
+    "start:mocks": "node -r dotenv/config -r ./mocks node_modules/.bin/remix-serve build"
   }
 }

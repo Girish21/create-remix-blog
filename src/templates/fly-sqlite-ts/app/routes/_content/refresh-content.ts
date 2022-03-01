@@ -1,7 +1,5 @@
-import type { ActionFunction } from 'remix'
-import { json } from 'remix'
+import { ActionFunction, json } from 'remix'
 import * as dns from 'dns'
-
 import { getRequiredEnvVar } from '~/utils/misc'
 
 export const action: ActionFunction = async ({ request }) => {

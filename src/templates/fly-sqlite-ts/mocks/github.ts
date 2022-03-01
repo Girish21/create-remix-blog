@@ -39,8 +39,7 @@ export const GitHubMocks: Array<
       const path = decodeURIComponent(req.params.path).trim()
 
       if (
-        owner !== process.env.GH_OWNER ||
-        repo !== process.env.GH_REPO ||
+        `${owner}/${repo}` !== process.env.GITHUB_REPOSITORY ||
         !path.startsWith('content')
       ) {
         throw new Error(
@@ -107,7 +106,7 @@ export const GitHubMocks: Array<
       }
       const sha = decodeURIComponent(req.params.sha).trim()
 
-      if (owner !== process.env.GH_OWNER || repo !== process.env.GH_REPO) {
+      if (`${owner}/${repo}` !== process.env.GITHUB_REPOSITORY) {
         throw new Error(
           `Trying to fetch resource for unmockable resource: ${owner}/${repo}`,
         )
