@@ -7,11 +7,12 @@ export default function build() {
   return [
     {
       external: [/node_modules/, /meow/],
-      input: ['./src/cli.ts'],
+      input: ['./src/cli.ts', './src/index.ts'],
       output: {
         dir: 'build',
         format: 'cjs',
         banner: '#!/usr/bin/env node\n',
+        interop: 'auto',
       },
       plugins: [
         babel({
