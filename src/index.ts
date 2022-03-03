@@ -116,12 +116,12 @@ export async function createApp(
   )
 
   // setup prject if any specific setup is required
+  const serverScripts = path.resolve(serverTemplate, 'scripts', 'init.js')
   const projectScriptsDir = path.resolve(projectDir, 'scripts')
-  const projectScripts = path.resolve(projectDir, 'scripts', 'init.js')
 
-  if (fs.existsSync(projectScriptsDir)) {
+  if (fs.existsSync(serverScripts)) {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const initProject = require(projectScripts)
+    const initProject = require(serverScripts)
     await initProject(projectDir)
     fs.removeSync(projectScriptsDir)
   }
