@@ -36,7 +36,6 @@ async function main(projectDir) {
     fs.writeFile(readmePath, newreadme),
     fs.writeFile(envPath, envExample),
     fs.writeFile(flyConfigPath, toml.stringify(flyConfigToml)),
-    fs.remove(envExamplePath),
   ])
 }
 
