@@ -1,6 +1,6 @@
 {
   "name": "create-remix-blog",
-  "version": "0.0.9",
+  "version": "0.0.10-pre.0",
   "bin": {
     "create-remix-blog": "cli.js"
   },
