@@ -128,4 +128,10 @@ export async function createApp(
 
   // run npm install
   childprocess.execSync('npm install', { cwd: projectDir, stdio: 'inherit' })
+
+  // create first blog
+  childprocess.execSync('npm run new:blog', {
+    cwd: projectDir,
+    stdio: 'inherit',
+  })
 }
