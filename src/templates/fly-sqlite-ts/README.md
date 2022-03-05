@@ -59,7 +59,7 @@ This command starts four processes concurrently.
 
 ### Relavant files 🔍
 
-- tailwind config [tailwind.config.js](./tailwind.config.js)
+- Tailwind config [tailwind.config.js](./tailwind.config.js)
 - MSW API mock server [mock](./mocks/start.ts)
 - Content change watcher [refresh-on-content-change](./others/refresh-on-content-change.ts)
 
@@ -148,13 +148,19 @@ To get the current app URL and IP address. The app URL will be `https://YOUR_APP
 
 ### Adding Custom Domain 🔖
 
-To add a custom domain to the app, you first must buy a domain from a Domain Name Register, and you can choose one of your preferences. Some popular options are [Domain.com](https://www.domain.com/), [Google](https://domains.google.com/registrar), [Cloudflare](https://www.cloudflare.com/en-gb/products/registrar/). We also have to create an SSL certificate on Fly with the domain name. We can do that by running the command:
+To add a custom domain to the app, you first must buy a domain from a Domain Name Register, and you can choose one of your preferences. Some popular options are [Domain.com](https://www.domain.com/), [Google](https://domains.google.com/registrar), [Cloudflare](https://www.cloudflare.com/en-gb/products/registrar/).
+
+After buying the domain, we can add a DNS record to point the domain or create a subdomain and point that to the Fly app URL. We can do that by adding a DNS record using the CNAME option and entering the Fly URL `https://YOUR_APP_NAME.fly.dev`.
+
+We also have to create an SSL certificate on Fly with the domain name. We can do that by running the command:
 
 ```sh
 flyctl cert create [DOMAIN]
 ```
 
 You can read more about this at [SSL for Custom Domains](https://fly.io/docs/app-guides/custom-domains-with-fly/)
+
+That's it, and we are ready to share our blog with the rest of the world! But there is one more step to take care of before sharing it.
 
 ### Scaling ⚖️
 
@@ -169,7 +175,7 @@ Our app is currently deployed in only one region we selected when we ran `flyctl
 Since Fly [anchors the regions](https://fly.io/docs/reference/volumes/#creating-volumes) based on the volumes created, we can add more regions by creating a volume in the new region or adding a replica in the same region. For example, we can do that by:
 
 ```sh
-flyctl volumes create YOUR_APP_NAME_data --region [NEW_REGION] --size 1
+flyctl volumes create data --region [NEW_REGION] --size 1
 ```
 
 > You can check this list of available regions at [Fly regions][fly-regions]
@@ -207,6 +213,22 @@ This template comes preconfigured with [Jest][jest] and [React testing library][
 ## Type check ʦ
 
 You can run `npm run typecheck` to run `tsc` on the codebase. Type check is also included as part of the deployment workflow.
+
+## Debugging
+
+Some helpful commands to debug the application on Fly using the command line
+
+### Logs
+
+You can check the logs using the command `flyctl logs` from the project directory, containing the `fly.toml` file in the project's root. You can also check the logs from the console by visiting [fly.io/apps](https://fly.io/apps).
+
+### Console
+
+You can also log in to the remote console using the `flyctl ssh console` command.
+
+### Database
+
+After logging in to the console, you can also inspect the SQLite DB. But first, we have to install SQLite on the remote machine. We can do that using the `apt-get install sqlite3` command. Then, `cd` into the volume using the `cd data` command (Note: `data` refers to the volume's name created from the command line). And then run the command `sqlite3 sqlite.db` to open a command-line interface into the database.
 
 ## Important links
 
