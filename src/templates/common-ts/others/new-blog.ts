@@ -8,6 +8,10 @@ async function go() {
 
   const blogsPath = path.resolve(process.cwd(), 'content', 'blog')
 
+  if (!fs.existsSync(blogsPath)) {
+    fs.mkdirSync(blogsPath)
+  }
+
   const blogs = fs
     .readdirSync(blogsPath)
     .map(blog => blog.replace(/(\.mdx?)?$/, ''))
