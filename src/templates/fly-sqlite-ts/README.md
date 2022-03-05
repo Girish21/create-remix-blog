@@ -117,7 +117,7 @@ openssl rand -hex 32
 We have to set this secret as part of the GitHub actions secret and a Fly secret. The key should be `REFRESH_TOKEN`. You can create a new actions secret in GitHub and create a new secret for the Fly app by running the command.
 
 ```sh
-flyctl secrets set REFRESH_TOKEN=[GENERATED_PASSWORD]
+flyctl secrets set REFRESH_TOKEN={GENERATED_PASSWORD}
 ```
 
 ### Volumes 💾
@@ -125,7 +125,7 @@ flyctl secrets set REFRESH_TOKEN=[GENERATED_PASSWORD]
 We also need to create a volume in Fly to persist our app data (SQLite DB) so that Fly can persist the data stored across deployments and container restarts. Again, we can do that using the Fly command line.
 
 ```sh
-flyctl volumes create YOUR_APP_NAME_data --region [REGION] --size 1
+flyctl volumes create data --region {REGION} --size 1
 ```
 
 > Note: REGION should be the region selected when launching the app. You can check the region chosen by running `flyctl regions list`.
